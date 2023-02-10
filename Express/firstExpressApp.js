@@ -25,6 +25,6 @@ app.get('/about-us', (req, res) => {
 });
 
 //404 page
-app.get((req, res) => {
-    res.sendFile('./chapter1Views/404.html', {root: __dirname});
+app.use((req, res) => {
+    res.status(404).sendFile('./chapter1Views/404.html', {root: __dirname});
 });
