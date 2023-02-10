@@ -2,14 +2,20 @@
 
 const http = require('http');
 const fs = require('fs');
+const _ = require('lodash');
 
 const server = http.createServer((req, res) => {
-   console.log(req.url, req.method);
+  //lodash
+  const num = _.random(0, 20);
+  console.log(num);
 
-//set header content type
+  const greet = _.once(() => {
+    console.log('hello');
+  });
+
 res.setHeader('Content-type', 'text/html');
 
-let path = './chapter6Views/';
+let path = './chapter1Views/';
 switch(req.url){
     case '/': 
       path += 'index.html';
@@ -33,28 +39,12 @@ switch(req.url){
       //status code
       res.statusCode = 404;
       break;
-}
-
-//    res.write('<head><linl rel="stylesheet" href="#"></head>');
-//    res.write('<p>hello, developers</p>');
-//    res.write('<p>hello again, developers</p>');
-//    res.end();
- 
-//send an html file
-// fs.readFile('./chapter6Views/index.html', (err, data) => {
-//     if(err) {
-//         console.log(err);
-//     } else {
-//         // res.write(data);
-//         res.end(data);
-//     }
-// })   
+} 
 
 fs.readFile(path, (err, data) => {
     if (err) {
         console.log(err);
     } else {
-        // res.write(data);
         res.end(data);
     }
 })  
