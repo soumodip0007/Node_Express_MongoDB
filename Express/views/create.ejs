@@ -7,7 +7,6 @@
     <title>To Do List</title>
 </head>
 <body>
-
     <nav>
         <div class="site-title">
             <a href="/">To Do List</a>
@@ -20,8 +19,17 @@
         </ul>
     </nav>
 
-    <div class="home content">
-        <h2>All Tasks</h2>
+    <div class="create-task content">
+        <form>
+            <label for="title">Task title:</label>
+            <input type="text" id="title" required>
+            <label for="details">Task details:</label>
+            <input type="text" id="details" required>
+            <label for="body">Task body:</label>
+            <input type="text" id="body" required>
+            <textarea id="body" required></textarea>
+            <button>Submit</button>
+        </form>
     </div>
 </body>
 </html>

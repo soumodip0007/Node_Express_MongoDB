@@ -6,7 +6,6 @@ const app = express();
 
 //register view engine
 app.set('view engine', 'ejs');
-app.set('views', 'myviews');
 
 //listen for request
 app.listen(3000);
@@ -14,21 +13,20 @@ app.listen(3000);
 app.get('/', (req, res) => {
   //send method instead of write and end method 
   //res.send('<p>home page</p>');
-  res.sendFile('./chapter1Views/index.html', {root: __dirname});
+  res.render('index');
 });
 
 app.get('/about', (req, res) => {
     //send method instead of write and end method 
     //res.send('<p>about page</p>');
-    res.sendFile('./chapter1Views/about.html', {root: __dirname});
+    res.render('about');
 });
 
-//redirects
-app.get('/about-us', (req, res) => {
-    res.redirect('/about');
-});
+app.get('/tasks/create', (req, res) => {
+    res.render('create');
+})
 
 //404 page
 app.use((req, res) => {
-    res.status(404).sendFile('./chapter1Views/404.html', {root: __dirname});
+    res.status(404).render('404')
 });
