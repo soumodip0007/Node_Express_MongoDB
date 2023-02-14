@@ -24,6 +24,15 @@
         <h2>All Tasks</h2>
 
         <% if(tasks.length > 0) { %>
+            <% tasks.forEach(tasks => { %>
+
+               <h3 class="title"><%= tasks.title %></h3>
+               <p class="body"><%= tasks.body %></p>
+
+            <% }) %>
+        <% } else { %>
+            <p>There are no tasks to display...</p>
+        <% } %>    
 
     </div>
 </body>
