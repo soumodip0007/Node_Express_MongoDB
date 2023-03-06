@@ -1,16 +1,25 @@
 const express = require('express');
 // third party middleware
-const morgan = require('morgan')
+const morgan = require('morgan');
+
+const mongoose = require('mongoose');
 
 //express app
 
 const app = express();
+
+//connect to mongoDB
+const dbURI = 'mongodb+srv://Pritam:Mongo@007@nodeJSBasics.7ufenpt.mongodb.net/?retryWrites=true&w=majority';
+mongoose.connect();
 
 //register view engine
 app.set('view engine', 'ejs');
 
 //listen for request
 app.listen(3000);
+
+//middleware static files
+app.use(express.static('public'));
 
 // third party middleware
 app.use(morgan('dev'));

@@ -1,6 +1,6 @@
 //file system
 
-// const fs = require('fs');
+const fs = require('fs');
 
 //reading files
 // fs.readFile('./docs/doc1.txt', (err, data) => {
@@ -46,11 +46,11 @@
 
 
 //deleting files
-// if(fs.existsSync('./docs/deleteMe.txt')) {
-//     fs.unlink('./docs/deleteMe.txt', (err) => {
-//         if (err) {
-//             console.log(err)
-//         }
-//         console.log('file deleted');
-//     })
-// }
+if(fs.existsSync('./docs/deleteMe.txt')) {
+    fs.unlink('./docs/deleteMe.txt', (err) => {
+        if (err) {
+            console.log(err)
+        }
+        console.log('file deleted');
+    })
+}
