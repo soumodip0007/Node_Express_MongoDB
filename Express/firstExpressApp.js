@@ -9,7 +9,7 @@ app.listen(3000);
 
 app.get('/', (req, res) => {
   //send method instead of write and end method 
-  //res.send('<p>home page</p>');
+  // res.send('<p>home page</p>');
   res.sendFile('./chapter1Views/index.html', {root: __dirname});
 });
 

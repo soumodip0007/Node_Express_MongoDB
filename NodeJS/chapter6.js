@@ -19,7 +19,7 @@ switch(req.url){
     case '/about':
       path += 'about.html';
       //status code
-      res.statusCode = 200;
+      res.statusCode =200;
       break;
       case '/about-me':
       path += 'about.html';
@@ -35,12 +35,12 @@ switch(req.url){
       break;
 }
 
-//    res.write('<head><linl rel="stylesheet" href="#"></head>');
-//    res.write('<p>hello, developers</p>');
-//    res.write('<p>hello again, developers</p>');
-//    res.end();
+  //  res.write('<head><linl rel="stylesheet" href="#"></head>');
+  //  res.write('<p>hello, developers</p>');
+  //  res.write('<p>hello again, developers</p>');
+  //  res.end();
  
-//send an html file
+// send a single html file
 // fs.readFile('./chapter6Views/index.html', (err, data) => {
 //     if(err) {
 //         console.log(err);

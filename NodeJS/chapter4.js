@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 
-//reading files
-// fs.readFile('./docs/doc1.txt', (err, data) => {
+// reading files
+// fs.readFile('./docs/doc3.txt', (err, data) => {
 //    if(err){
 //     console.log(error);
 //    } else {
@@ -20,7 +20,7 @@ const fs = require('fs');
 //    console.log('file was written');
 // });
 
-// fs.writeFile('./docs/doc2.txt', 'hello, pekka', () => {
+// fs.writeFile('./docs/doc5.txt', 'hello, pekka', () => {
 //     console.log('file was written');
 // });
 

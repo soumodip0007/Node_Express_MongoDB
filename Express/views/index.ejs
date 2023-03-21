@@ -30,10 +30,11 @@
 
         <% if(tasks.length > 0) { %>
             <% tasks.forEach(tasks => { %>
-
+               <br><br>
                <h3 class="title"><%= tasks.title %></h3>
                <p class="body"><%= tasks.body %></p>
-
+               <p class="assignedBy"><%= tasks.assignedBy %></p>
+               <p class="id"> id: <%= tasks.id %></p>
             <% }) %>
         <% } else { %>
             <p>There are no tasks to display...</p>
