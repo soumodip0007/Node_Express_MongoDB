@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
 res.setHeader('Content-type', 'text/html');
 
 let path = './chapter1Views/';
-switch(req.url){
+switch (req.url) {
     case '/': 
       path += 'index.html';
       //status code

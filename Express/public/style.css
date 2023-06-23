@@ -7,9 +7,9 @@ body {
   font-family: 'Noto Serif', serif;
   max-width: 1200px;
 }
-
-p,
-h1,
+h1{
+  color: #3c6266;
+}
 h2,
 h3,
 a,
@@ -71,7 +71,36 @@ h3 {
 }
 
 /* index styles */
+.tasks a{
+  display: block;
+  margin: 40px 0;
+  padding-left: 30px;
+  border-left: 6px solid #3c6266
+}
+
+.bio {
+  color: #3c6266;
+  margin-left: 20px;
+}
+
+.tasks a:hover h3{
+  color: #3c6266;
+}
 /* details styles */
+.details {
+  position: relative;
+}
+.delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 4px;
+  padding: 8px;
+}
+.delete:hover {
+  cursor: pointer;
+  box-shadow: 1px 2px 3px #3c6266;
+}
 /* create styles */
 .create-task form {
   max-width: 400px;
@@ -130,6 +159,7 @@ body {
   max-width: 500px;
   text-align: center;
 }
+
 
 .button_outer {
   background: #3c6266;

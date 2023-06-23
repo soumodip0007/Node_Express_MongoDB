@@ -1,6 +1,6 @@
 //Global Objects
 
-console.log(global);
+// console.log(global);
 
 
 // const int = setInterval(() => {
@@ -10,7 +10,7 @@ console.log(global);
 // global.setTimeout(() => {
 //     console.log('In the timeout');
 //     clearInterval(int);
-// }, 6000);
+// }, 3000);
 
 
 

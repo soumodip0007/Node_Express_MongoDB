@@ -11,13 +11,11 @@ const Task = require('./Models/tasks');
 const app = express();
 
 //connect to mongoDB
-
-const dbURI = 'mongodb+srv://MarioDb:test1234@nodejsbasics.7ufenpt.mongodb.net/nodeJSBasics?retryWrites=true&w=majority'
+const dbURL = 'mongodb+srv://MarioDb:test1234@nodejsbasics.7ufenpt.mongodb.net/nodeJSBasics?retryWrites=true&w=majority'
 mongoose.set('strictQuery', false)
-mongoose.connect(dbURI)
+mongoose.connect(dbURL)
   .then((result) => app.listen(3000))
   .catch((err) => console.log(err))
-
 
 //register view engine
 app.set('view engine', 'ejs');
@@ -27,61 +25,64 @@ app.set('view engine', 'ejs');
 
 //middleware static files
 app.use(express.static('public'));
-
+app.use(express.urlencoded({extended:true}));
 // third party middleware
 app.use(morgan('dev'));
 
-//mongoose and mongo sandbox routes
-app.get('/add-task', (req, res) => {
-    const task = new Task({
-      title: 'new task',
-      assignedBy: 'Faculty',
-      body: 'about body',
-      id: 3
-    });
-    task.save()
-      .then((result) => {
-        res.send(result)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-})
-
-//Middleware
-// app.use((req, res, next) => {
-//     console.log('new request made:');
-//     console.log('host: ', req.hostname);
-//     console.log('path: ', req.path);
-//     console.log('method: ', req.method);
-//     next();
-// });
-
-//Middleware
-// app.use((req, res, next) => {
-//     console.log('in the next middleware');
-//     next();
-// });
-
+//home page
 app.get('/', (req, res) => {
-  //send method instead of write and end method 
-  //res.send('<p>home page</p>');
-  const tasks = [
-        { title: 'learn html', body: 'task', assignedBy: 'faculty - Jhon', id: '1' },
-        { title: 'learn css', body: 'task', assignedBy: 'faculty - Kevin', id: '2' },
-        { title: 'learn js', body: 'task', assignedBy: 'faculty - Joseph', id: '3' },
-    ];
-  res.render('index', {title: 'Home', tasks});
+  res.redirect('/tasks');
 });
 
 app.get('/about', (req, res) => {
-    //send method instead of write and end method 
-    //res.send('<p>about page</p>');
     res.render('about', {title: 'About'});
 });
 
+//task routes
+app.get('/tasks', (req, res) => {
+  Task.find().sort({createdAt: -1})
+    .then((result) => {
+      res.render('index', {title:'All Tasks', tasks: result})
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+})
 
-app.get('/tasks/create', (req, res) => {
+//posting datas into database
+app.post('/create', (req, res) => {
+    const task = new Task(req.body);
+    task.save()
+      .then(result => res.redirect('/tasks'))
+      .catch(err => console.log(err));
+})
+
+//details page
+app.get('/tasks/:id', (req, res) => {
+    const id = req.params.id;  
+    Task.findById(id)
+       .then(result => {
+          res.render('details', {task: result, title: 'Task Details'});
+       })
+       .catch(err => {
+        console.log(err);
+       })
+})
+
+//delete id
+app.delete('/tasks/:id', (req, res) => {
+    const id = req.params.id;
+    Task.findByIdAndDelete(id)
+    .then(result => {
+      res.json({redirect: '/tasks'})
+    })
+    .catch(err => {
+      console.log(err);
+    })
+})
+
+//create page
+app.get('/create', (req, res) => {
     res.render('create', {title: 'Create a new task'});
 })
 

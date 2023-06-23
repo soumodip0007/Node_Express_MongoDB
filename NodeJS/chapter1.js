@@ -1,6 +1,6 @@
 const name = 'pekka';
 
-console.log(name);
+// console.log(name);
 
 
 const greet = (name) => {

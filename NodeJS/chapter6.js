@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
 res.setHeader('Content-type', 'text/html');
 
 let path = './chapter6Views/';
-switch(req.url){
+switch(req.url) {
     case '/': 
       path += 'index.html';
       //status code
@@ -19,7 +19,7 @@ switch(req.url){
     case '/about':
       path += 'about.html';
       //status code
-      res.statusCode =200;
+      res.statusCode = 200;
       break;
       case '/about-me':
       path += 'about.html';
@@ -41,14 +41,14 @@ switch(req.url){
   //  res.end();
  
 // send a single html file
-// fs.readFile('./chapter6Views/index.html', (err, data) => {
-//     if(err) {
-//         console.log(err);
-//     } else {
-//         // res.write(data);
-//         res.end(data);
-//     }
-// })   
+fs.readFile('./chapter6Views/index.html', (err, data) => {
+    if(err) {
+        console.log(err);
+    } else {
+        // res.write(data);
+        res.end(data);
+    }
+})   
 
 fs.readFile(path, (err, data) => {
     if (err) {

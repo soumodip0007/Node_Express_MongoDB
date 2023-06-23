@@ -6,7 +6,7 @@ const taskSchema = new Schema({
         type: String,
         required: true,
     },
-    assignedBy: {
+    details: {
         type: String,
         required: true
     },
@@ -14,12 +14,7 @@ const taskSchema = new Schema({
         type: String,
         required: true
     },
-    id: {
-        type: Number,
-        required: true
-
-    }
-}, { timestamps: true});
+}, {timestamps: true});
 
 const Task = mongoose.model('Task', taskSchema);
 module.exports = Task;
